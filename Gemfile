@@ -59,7 +59,7 @@ group :test do
 end
 
 
-gem "nokogiri", "= 1.16.6"
+gem "nokogiri", "1.18.7"
 
 gem "devise", "~> 4.9"
 gem "devise-bootstrap-views", "~> 1.1"
