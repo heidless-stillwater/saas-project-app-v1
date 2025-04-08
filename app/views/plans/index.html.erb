@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="mb-5">
+    <h1 class="text-center mt-4 mb-3 text-white">plans</h2>
+    <div class="text-center">
+      <%= link_to "New plan", new_plan_path, class: "btn btn-success mt-2" %>
+    </div>
+  </div>
+
+  <div id="plans">
+    <div class="row row-cols-4 justify-content-center">
+      <% @plans.each do |plan| %>
+      
+        <div class="center me-0 mb-5">
+          <%= render plan %>
+          
+          <div class="d-flex flex-row mt-2 justify-content-center">
+
+            <%= link_to plan do %>
+              <%= fa_icon "eye 2x", class: "mt-1 mx-2" %>
+            <% end %>
+
+            <%= link_to edit_plan_path(plan) do %>
+              <%= fa_icon "edit 2x", class: "mt-1 mx-2" %>
+            <% end %>
+
+            <%= link_to plan, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+              <%= fa_icon "trash 2x", class: "mt-1 mx-2" %>
+            <% end %>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

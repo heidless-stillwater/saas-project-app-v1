@@ -1,0 +1,29 @@
+
+<div class="container">
+
+  <h1 class="text-center text-white mt-4"><%= @plan.name %></h2>
+
+  <div class="row row-cols-4 mt-4 justify-content-center">
+      <%= render @plan %>
+  </div>
+
+  <div class="d-flex flex-row justify-content-center mt-4">
+    <%= link_to edit_plan_path(@plan) do %>
+      <%= fa_icon "edit 2x", class: "mt-1 mx-2" %>
+    <% end %>
+
+    <%= link_to new_plan_path do %>
+      <%= fa_icon "plus-circle 2x", class: "mt-1 mx-2" %>
+    <% end %>
+
+    <%= link_to plans_path do %>
+      <%= fa_icon "list 2x", class: "mt-1 mx-2" %>
+    <% end %>
+
+    <%= link_to  @plan, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+      <%= fa_icon "trash 2x", class: "mt-1 mx-2" %>
+    <% end %>
+
+  </div>
+
+</div>

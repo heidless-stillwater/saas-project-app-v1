@@ -1,0 +1,57 @@
+
+<div class="container col-2 mt-4">
+  <%= form_with(model: plan) do |form| %>
+    <% if plan.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(plan.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+        <ul>
+          <% plan.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <form>
+      <div class="form-group">
+
+        <%= form.label :name, style: "display: block", class: "flabel" %>
+        <%= form.text_field :name %>
+
+        <%= form.label :amount, style: "display: block", class: "flabel mt-3" %>
+        <%= form.text_field :amount %>
+
+        <div class="form-row">
+          <div class="form-group col-md-6 mt-3">
+            <%= form.label :symbol %>
+            <%= form.file_field :symbol, value: "Select Symbol", class: 'form-control btn btn-primary' %>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-5">Save plan </button>
+    </form>
+
+  <% end %>
+
+  <div class="center me-0 mb-5 mt-5">    
+    <div class="d-flex flex-row">
+
+      <%= link_to plan do %>
+        <%= fa_icon "eye 2x", class: "mt-1 mx-2" %>
+      <% end %>
+
+      <%= link_to plans_path do %>
+        <%= fa_icon "list 2x", class: "mt-1 mx-2" %>
+      <% end %>
+
+      <%= link_to plan, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <%= fa_icon "trash 2x", class: "mt-1 mx-2" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+

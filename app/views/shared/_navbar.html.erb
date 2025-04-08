@@ -1,0 +1,111 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+
+    <%= link_to @org_active_name, root_path, class: "navbar-brand", id: "logo" %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Organizations
+          </a>
+          <div class="dropdown-menu">
+            <% if current_user %>
+              <%= link_to new_organization_path, class: "dropdown-item" do %>
+                <%= fa_icon 'edit'%> New Organization
+              <% end %>
+            <% end %>
+            <%= link_to "View Organization", organizations_path, class: "dropdown-item" %>
+          </div>
+        </li>  
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Plan
+          </a>
+          <div class="dropdown-menu">
+            <% if current_user %>
+              <%= link_to new_plan_path, class: "dropdown-item" do %>
+                <%= fa_icon 'edit'%> New Plan
+              <% end %>
+            <% end %>
+            <%= link_to "View Plan", plans_path, class: "dropdown-item" %>
+          </div>
+        </li>  
+
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Profile
+            </a>
+            <ul class="dropdown-menu">
+              <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+                <%= fa_icon 'edit'%> Edit Profile
+              <% end %>
+              <%= link_to "View Profile", user_path(current_user),
+                              class: "dropdown-item" %>
+            </ul>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Artifacts
+            </a>
+            <div class="dropdown-menu">
+              <% if current_user %>
+                <%= link_to new_artifact_path, class: "dropdown-item" do %>
+                  <%= fa_icon 'edit'%> New Artifact
+                <% end %>
+              <% end %>
+              <%= link_to "View Artifacts", artifacts_path, class: "dropdown-item" %>
+            </div>
+          </li>  
+
+
+        <% end%> 
+      </ul>
+      
+      <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+        <h1 class="navbar-brand mt-2" id="logo">Proj</h1>
+      </ul>
+
+      <ul class="ml-auto navbar-nav">
+        <% if current_user  %>
+
+          <li class="nav-item me-3">
+              <%= link_to Organization.find(current_user.organization_id), class: "btn btn-warning", style: "text-decoration: none" do %>
+                <%= fa_icon 'building' %> <%= Organization.find(current_user.organization_id).name %>
+              <% end %>
+          </li>
+
+          <li class="nav-item me-3">
+              <%= link_to current_user, class: "btn btn-success", style: "text-decoration: none" do %>
+                <%= fa_icon 'user' %> <%= current_user.username ? current_user.username : "No Username" %> (<%= current_user ? current_user.email : "Not logged in" %>)
+              <% end %>
+          </li>
+
+          <li class="nav-item me-3">
+            <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-xs btn-danger logout-button" %>
+          </li>
+        <% else %>
+          <li class="nav-item me-3">
+            <%= button_to "Sign In", new_user_session_path, class: "btn btn-xs btn-success" %>
+          </li>
+          <li class="nav-item me-3">
+            <%= button_to "Sign Up", new_user_registration_path, class: "btn btn-xs btn-primary" %>
+          </li>
+        <% end %>    
+
+      </ul>
+
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
