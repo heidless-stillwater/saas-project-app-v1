@@ -53,15 +53,15 @@
           
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Artifacts
+              Projects
             </a>
             <div class="dropdown-menu">
               <% if current_user %>
-                <%= link_to new_artifact_path, class: "dropdown-item" do %>
-                  <%= fa_icon 'edit'%> New Artifact
+                <%= link_to new_project_path, class: "dropdown-item" do %>
+                  <%= fa_icon 'edit'%> New Project
                 <% end %>
               <% end %>
-              <%= link_to "View Artifacts", artifacts_path, class: "dropdown-item" %>
+              <%= link_to "View Projects", projects_path, class: "dropdown-item" %>
             </div>
           </li>  
 

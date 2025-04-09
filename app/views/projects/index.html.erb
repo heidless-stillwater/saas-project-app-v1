@@ -1,0 +1,42 @@
+
+<div class="container">
+  <% content_for :title, "Projects" %>
+
+  <div class="mb-5">
+    <h1 class="text-center mt-4 mb-3 text-white">Projects</h2>
+    <div class="text-center">
+      <%= link_to "New organization", new_project_path, class: "btn btn-success mt-2" %>
+    </div>
+  </div>
+
+  <div id="projects">
+    <div class="row row-cols-4 justify-content-center">
+      <% @projects.each do |project| %>
+      
+        <div class="center me-0 mb-5">
+          <%= render project %>
+          
+          <div class="d-flex flex-row mt-2 justify-content-center">
+
+            <%= link_to project do %>
+              <%= fa_icon "eye 2x", class: "mt-1 mx-2" %>
+            <% end %>
+
+            <%= link_to edit_project_path(project) do %>
+              <%= fa_icon "edit 2x", class: "mt-1 mx-2" %>
+            <% end %>
+
+            <%= link_to project, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+              <%= fa_icon "trash 2x", class: "mt-1 mx-2" %>
+            <% end %>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+ </div>

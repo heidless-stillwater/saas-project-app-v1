@@ -1,0 +1,39 @@
+
+<div class="container col-2 mt-4">
+  <%= form_with(model: project) do |form| %>
+    <% if project.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(project.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+        <ul>
+          <% project.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <form>
+      <div class="form-group">
+
+        <%= form.label :name, style: "display: block", class: "flabel" %>
+        <%= form.text_field :name %>
+
+        <%= form.label :details, style: "display: block", class: "flabel" %>
+        <%= form.text_field :details %>
+
+        <%= form.label :expected_completion_date, style: "display: block", class: "flabel" %>
+        <%= form.date_field :expected_completion_date %>
+
+        <%= form.label :organization_id, style: "display: block", class: "flabel" %>
+        <%= form.text_field :organization_id %>
+
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-5 col-12">Save organization </button>
+    </form>
+
+  <% end %>
+
+</div>
+

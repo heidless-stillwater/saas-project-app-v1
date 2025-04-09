@@ -8,6 +8,13 @@
 
   <%= render "form", organization: @organization %>
 
-  <br>
+  <div class="d-flex flex-row justify-content-center mt-4">
+
+    <%= link_to organizations_path do %>
+      <%= fa_icon "list 2x", class: "mt-1 mx-2" %>
+    <% end %>
+
+  </div>
+
 
 </div>

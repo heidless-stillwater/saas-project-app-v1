@@ -31,27 +31,10 @@
 
       </div>
 
-      <button type="submit" class="btn btn-primary mt-5">Save plan </button>
+      <button type="submit" class="btn btn-primary mt-5 col-12">Save plan </button>
     </form>
 
   <% end %>
 
-  <div class="center me-0 mb-5 mt-5">    
-    <div class="d-flex flex-row">
-
-      <%= link_to plan do %>
-        <%= fa_icon "eye 2x", class: "mt-1 mx-2" %>
-      <% end %>
-
-      <%= link_to plans_path do %>
-        <%= fa_icon "list 2x", class: "mt-1 mx-2" %>
-      <% end %>
-
-      <%= link_to plan, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-        <%= fa_icon "trash 2x", class: "mt-1 mx-2" %>
-      <% end %>
-
-    </div>
-  </div>
 </div>
 
