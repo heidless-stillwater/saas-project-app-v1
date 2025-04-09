@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
-  resources :projects
   resources :plans
-  devise_for :users, :controllers => { :registrations => 'registrations' }
+  devise_for :users, controllers: { registrations: "registrations" }
   root "welcome#index"
-  
-  resources :organizations
 
-  resources :artifacts do 
+  resources :organizations do
+    resources :projects
+  end
+
+  resources :artifacts do
     member do
       # remove_artimg_artifact_path(artimg)
       delete :remove_artimg
     end
   end
 
-  resources :users, except: [:new] do
+  resources :users, except: [ :new ] do
     member do
       # remove_image_post_path(image)
       delete :remove_image
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
 
   # root "application#stripe_payment"
   resources :charges, only: :create
-  get :stripe_payment, to: 'application#stripe_payment'
+  get :stripe_payment, to: "application#stripe_payment"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

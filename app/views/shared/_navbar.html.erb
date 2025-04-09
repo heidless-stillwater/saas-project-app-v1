@@ -57,11 +57,11 @@
             </a>
             <div class="dropdown-menu">
               <% if current_user %>
-                <%= link_to new_project_path, class: "dropdown-item" do %>
+                <%= link_to new_organization_project_path(@active_org), class: "dropdown-item" do %>
                   <%= fa_icon 'edit'%> New Project
                 <% end %>
               <% end %>
-              <%= link_to "View Projects", projects_path, class: "dropdown-item" %>
+              <%= link_to "View Projects", organization_projects_path(@active_org), class: "dropdown-item" %>
             </div>
           </li>  
 
