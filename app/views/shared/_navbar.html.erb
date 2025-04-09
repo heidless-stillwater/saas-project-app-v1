@@ -57,11 +57,12 @@
             </a>
             <div class="dropdown-menu">
               <% if current_user %>
-                <%= link_to new_organization_project_path(@active_org), class: "dropdown-item" do %>
+                <% # debugger %>
+                <%= link_to new_organization_project_path(@org_active), class: "dropdown-item" do %>                
                   <%= fa_icon 'edit'%> New Project
                 <% end %>
               <% end %>
-              <%= link_to "View Projects", organization_projects_path(@active_org), class: "dropdown-item" %>
+              <%= link_to "View Projects", organization_projects_path(@org_active), class: "dropdown-item" %>
             </div>
           </li>  
 

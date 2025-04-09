@@ -1,6 +1,6 @@
 
 <div class="container col-2 mt-4">
-  <%= form_with(model: project) do |form| %>
+  <%= form_with(model: [@org_active, project]) do |form| %>
     <% if project.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(project.errors.count, "error") %> prohibited this image from being saved:</h2>

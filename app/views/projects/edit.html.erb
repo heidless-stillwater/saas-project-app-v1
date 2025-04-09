@@ -6,11 +6,11 @@
 
 <div class="d-flex flex-row justify-content-center mt-4">
 
-  <%= link_to new_project_path do %>
+  <%= link_to new_organization_project_path(@org_active) do %>
     <%= fa_icon "plus-circle 2x", class: "mt-1 mx-2" %>
   <% end %>
 
-  <%= link_to projects_path do %>
+  <%= link_to organization_projects_path(@org_active) do %>
     <%= fa_icon "list 2x", class: "mt-1 mx-2" %>
   <% end %>
 
