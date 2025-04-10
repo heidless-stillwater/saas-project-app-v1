@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   # set_current_tenant_by_subdomain_or_domain(:organization, :subdomain, :domain)
   set_current_tenant_through_filter
   before_action :set_tenancy_organization
+  before_action :set_available_plans
 
-  # before_action do 
+  # before_action do
   #   binding.irb
   # end
 
@@ -18,6 +19,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def set_available_plans
+    @plans = Plan.all
+  end
+
   def set_tenancy_organization
     @organizations = Organization.all
 
@@ -31,11 +36,10 @@ class ApplicationController < ActionController::Base
     @org_active_name = @org_active.blank? ? "No Organization" : @org_active.name
 
     set_current_tenant(@org_active)
-
   end
 
   def configure_permitted_parameter_fields
-    devise_parameter_sanitizer.permit(:sign_up, keys: [ :organization_id, :avatar, :username, images: [] ])    # new
-    devise_parameter_sanitizer.permit(:account_update, keys: [ :organization_id, :avatar, :username, images: [] ])   # edit
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :organization_id, :plan_id, :avatar, :username, images: [] ])    # new
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :organization_id, :plan_id, :avatar, :username, images: [] ])   # edit
   end
 end

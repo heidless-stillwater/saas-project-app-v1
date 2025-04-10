@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_09_133639) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_10_084532) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -112,8 +112,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_133639) do
     t.string "avatar"
     t.string "username"
     t.integer "organization_id"
+    t.bigint "plan_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["organization_id"], name: "index_users_on_organization_id"
+    t.index ["plan_id"], name: "index_users_on_plan_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -123,4 +125,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_133639) do
   add_foreign_key "organizations", "users"
   add_foreign_key "plans", "organizations"
   add_foreign_key "projects", "organizations"
+  add_foreign_key "users", "plans"
 end

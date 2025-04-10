@@ -6,6 +6,10 @@
     <h2 class="text-center my-3 text-white"><%= @user.email %></h2>
   </div>
 
+  <div class="mt-4 mb-3">
+    <h4 class="text-center mt-2 my-0"><%= fa_icon 'money 1x' %> <%= Plan.find(@user.plan_id).name %></h4> 
+  </div>
+
   <div class="mt-4">    
     <!-- <div class="card card-header results-block mt-3"> -->
     <div class="">
@@ -30,6 +34,7 @@
                 </span>
               </td>
             </tr>
+
           </tbody>
         </table>
       </div>
