@@ -19,18 +19,24 @@
         <%= form.label :name, style: "display: block", class: "flabel" %>
         <%= form.text_field :name %>
 
+        <div class="form-row">
+          <div class="form-group col-md-6 mt-3">
+            <%= form.label :image %>
+            <%= form.file_field :image, value: "Select Image", class: 'form-control btn btn-primary col-12' %>
+          </div>
+        </div>
+
         <%= form.label :details, style: "display: block", class: "flabel" %>
         <%= form.text_field :details %>
 
         <%= form.label :expected_completion_date, style: "display: block", class: "flabel" %>
         <%= form.date_field :expected_completion_date %>
 
-        <%= form.label :organization_id, style: "display: block", class: "flabel" %>
-        <%= form.text_field :organization_id %>
+        <%= form.hidden_field :organization_id, value: @org_active.id %>
 
       </div>
 
-      <button type="submit" class="btn btn-primary mt-5 col-12">Save organization </button>
+      <button type="submit" class="btn btn-primary mt-5 col-12">Save Project </button>
     </form>
 
   <% end %>

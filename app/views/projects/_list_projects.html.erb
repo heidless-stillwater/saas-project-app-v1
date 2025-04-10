@@ -1,0 +1,33 @@
+
+
+<div class="">
+  <% @projects.each do |project| %>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class=""><%= Organization.find(project.organization_id).name %></th>
+        </tr>
+        <tr>
+          <th>
+            <% if project.image.present? %>
+              <%= image_tag project.image, width: "200", class: "mx-auto d-block" %>
+            <% else %>
+              <h2 class="text-center my-5 text-secondary"> No Image </h2>
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th class="card-title mt-2 fs-2"><%= project.details %></th>
+        </tr>
+        <tr>
+          <th class="card-title mt-2 fs-2"><%= project.expected_completion_date %></th>
+        </tr>
+        <tr>
+          <th class="card-title mt-2 fs-2"><%= project.name %></th>
+        </tr>
+      </thead>
+    </table>
+
+  <% end %>
+</div>
