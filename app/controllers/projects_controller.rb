@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_tenancy_organization
+  # before_action :authenticate_user!
+
   before_action :set_project, only: %i[ show edit update destroy ]
   before_action :set_organization, only: %i[ show edit update destroy new create ]
   before_action :verify_organization
@@ -25,14 +27,13 @@ class ProjectsController < ApplicationController
   # POST /projects or /projects.json
   def create
     @project = Project.new(project_params)
-
+    # debugger
+    @user_plan = Plan.find(current_user.plan_id)
     respond_to do |format|
       if @project.save
         format.html { redirect_to [ @org_active, @project ], notice: "Project was successfully created." }
-        format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,10 +43,8 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to [ @org_active, @project ], notice: "Project was successfully updated." }
-        format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -66,9 +65,13 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
+    def set_user
+      @this_user = User.find(params[:id])
+    end
+
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :details, :expected_completion_date, :organization_id, :image)
+      params.require(:project).permit(:name, :details, :expected_completion_date, :organization_id, :user_id, :image)
     end
 
     def set_organization

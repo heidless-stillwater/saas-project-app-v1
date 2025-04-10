@@ -1,7 +1,9 @@
 class OrganizationsController < ApplicationController
-  skip_before_action :authenticate_user! 
+  skip_before_action :authenticate_user!
 
   before_action :set_organization, only: %i[ show edit update destroy ]
+  before_action :set_plans
+
 
   # GET /organizations or /organizations.json
   def index
@@ -64,8 +66,12 @@ class OrganizationsController < ApplicationController
       @organization = Organization.find(params[:id])
     end
 
+    def set_plans
+      @plans = Plan.all
+    end
+
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.require(:organization).permit(:logo, :domain, :subdomain, :active_org, :name, :user_id)
+      params.require(:organization).permit(:logo, :domain, :subdomain, :active_org, :name, :user_id, :plan_id)
     end
 end

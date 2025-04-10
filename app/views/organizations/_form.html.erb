@@ -19,6 +19,18 @@
         <%= form.label :name, style: "display: block", class: "flabel" %>
         <%= form.text_field :name %>
 
+
+        <div class="form-group col-md-6 mt-3">
+          <%= form.label :plan %>
+          <%= form.select(:plan_id, class: "form-select") do %>
+            <% # debugger %>
+            <% @plans.each do |c| -%>
+              <%= content_tag(:option, c.name, value: c.id) %>
+            <% end %>
+          <% end %>
+        </div>
+
+
         <%= form.label :domain, style: "display: block", class: "flabel" %>
         <%= form.text_field :domain %>
 

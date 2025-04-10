@@ -32,9 +32,8 @@
         <%= form.label :expected_completion_date, style: "display: block", class: "flabel" %>
         <%= form.date_field :expected_completion_date %>
 
-        <%= form.text_field :user_id, value: current_user.id %>
-
         <%= form.hidden_field :organization_id, value: @org_active.id %>
+        <% # debugger %>
 
       </div>
 

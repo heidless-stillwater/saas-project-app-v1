@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   set_current_tenant_through_filter
   before_action :set_tenancy_organization
   before_action :set_available_plans
+  before_action :set_current_user
 
   # before_action do
   #   binding.irb
@@ -21,6 +22,12 @@ class ApplicationController < ActionController::Base
 
   def set_available_plans
     @plans = Plan.all
+  end
+
+  def set_current_user
+    # debugger
+    @current_user = current_user
+    @user_active = User.find(@current_user.id) if @current_user.present?
   end
 
   def set_tenancy_organization

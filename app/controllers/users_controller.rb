@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def show
     @user = User.find(params[:id])
     # debugger
@@ -29,21 +28,22 @@ class UsersController < ApplicationController
     end
   end
 
-  
+
   def remove_image
     @image = ActiveStorage::Attachment.find(params[:id])
     @image.purge_later
     redirect_back(fallback_location: request.referer)
   end
 
-  
+
   private
+
 
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:post).permit(:username, :avatar, images: [])
   end
-  
+
   # def user_params
   #   params.require(:user).permit(:username, :email, :password, :admin, :bio, :avatar, :content, images: [])
   # end
