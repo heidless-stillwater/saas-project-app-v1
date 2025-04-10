@@ -10,6 +10,8 @@
     <h3 class="text-center mt-2 my-5"><%= fa_icon 'user 1x' %> <%= current_user.email %></h3>
     <h3 class="text-center mt-2 my-5"><%= fa_icon 'money 1x' %> <%= Plan.find(current_user.plan_id).name %></h3>
 
+    <%= render 'projects/list' %>
+
     <%= render 'shared/welcome_gallery' %>
 
     <div class="mx-auto d-block">

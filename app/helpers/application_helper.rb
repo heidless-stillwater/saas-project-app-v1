@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def gravatar_for(user, options = { size: 200 })
     # Assume you manually set the email_address here or get it from user input
     email_address = user.email.downcase
@@ -18,4 +17,14 @@ module ApplicationHelper
     image_tag(image_src, alt: user.email, class: "rounded shadow mx-auto d-block")
   end
 
+
+  def organization_name(organization_id)
+    # Fetch the organization name from the database
+    organization = Organization.find_by(id: organization_id)
+    if organization
+      organization.name
+    else
+      "Unknown Organization"
+    end
+  end
 end
