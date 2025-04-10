@@ -16,8 +16,10 @@
     <form>
       <div class="form-group">
 
-        <%= form.label :name, style: "display: block", class: "flabel" %>
-        <%= form.text_field :name %>
+        <div class="form-group col-md-6 mt-0">
+          <%= form.label :name, style: "display: block", class: "flabel" %>
+          <%= form.text_field :name %>
+        </div>
 
         <div class="form-row">
           <div class="form-group col-md-6 mt-3">
@@ -26,11 +28,15 @@
           </div>
         </div>
 
-        <%= form.label :details, style: "display: block", class: "flabel" %>
-        <%= form.text_field :details %>
+        <div class="form-group col-md-6 mt-3">
+            <%= form.label :details, style: "display: block", class: "flabel" %>
+            <%= form.text_field :details %>
+        </div>
 
-        <%= form.label :expected_completion_date, style: "display: block", class: "flabel" %>
-        <%= form.date_field :expected_completion_date %>
+        <div class="form-group col-md-12 mt-3">
+          <%= form.label :expected_completion_date, style: "display: block", class: "flabel" %>
+          <%= form.date_field :expected_completion_date, class: "form-control col-md-12 mt-1" %>
+        </div>
 
         <%= form.hidden_field :organization_id, value: @org_active.id %>
         <% # debugger %>
