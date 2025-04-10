@@ -1,5 +1,8 @@
 class ProjectsController < ApplicationController
+  before_action :set_tenancy_organization
   before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_organization, only: %i[ show edit update destroy new create ]
+  before_action :verify_organization
 
   # GET /projects or /projects.json
   def index
@@ -66,5 +69,17 @@ class ProjectsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def project_params
       params.require(:project).permit(:name, :details, :expected_completion_date, :organization_id, :image)
+    end
+
+    def set_organization
+      @organization = Organization.find(params[:organization_id])
+    end
+
+    def verify_organization
+      # debugger
+      unless params[:organization_id].to_i == @org_active.id
+        # redirect_to organization_projects_path(@org_active)
+        redirect_to organization_projects_path(@org_active), flash: { error: "You are not authorized to access this organization." }
+      end
     end
 end
