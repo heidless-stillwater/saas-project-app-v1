@@ -5,11 +5,12 @@ class Organization < ApplicationRecord
 
   def can_create_projects?
     # Assuming you have a method to get the user's plan
+    # debugger
     this_plan = Plan.find(plan_id)
     if this_plan.name == "free"
       projects.count < Project::MAX_NUM_PROJECTS
     else
-      true
+      this_plan.name == "premium"
     end
   end
 end

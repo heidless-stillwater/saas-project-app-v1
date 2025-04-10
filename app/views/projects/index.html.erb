@@ -2,11 +2,33 @@
 <div class="container">
   <% content_for :title, "Projects" %>
 
-  <div class="mb-5">
-    <h1 class="text-center mt-4 mb-3 text-white">Projects</h2>
-    <div class="text-center">
-      <%= link_to "New Project", new_organization_project_path(@org_active), class: "btn btn-success mt-2" %>
+
+  <div class="card text-center mx-auto mb-2" style="width: 19rem;">
+
+    <div class="card-body">
+      <h3 class="card-title"><%= current_user.email %></h3>
     </div>
+
+    <% if current_user.avatar.present? %>  
+      <%= image_tag current_user.avatar, width: "200", class: "mx-auto d-block card-img-top" %>
+    <% else %>
+      <h1 class="text-center my-5"> No Avatar </h1>
+    <% end %>
+
+    <h3 class="card-subtitle my-3"><%= fa_icon 'money 1x' %> <%= Plan.find(current_user.plan_id).name %></h3>
+
+  </div>
+
+  <div class="mb-3">
+    <% if @org_active.can_create_projects? %>
+      <div class="text-center">
+        <%= link_to "New Project", new_organization_project_path(@org_active), class: "btn btn-success mt-2" %>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <h2 class="text-center my-5 text-secondary"> You do not have permission to create more projects </h2>
+      </div>
+    <% end %>
   </div>
 
   <div id="projects">
