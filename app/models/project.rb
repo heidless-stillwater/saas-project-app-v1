@@ -11,8 +11,30 @@ class Project < ApplicationRecord
   validate :free_plan_can_only_have_one_project
 
   def free_plan_can_only_have_one_project
-    if self.new_record? && (organization.projects.count > (MAX_NUM_PLANS - 1)) && (organization.plan == "free")
+    if self.new_record? && (user.projects.count > (MAX_NUM_PLANS - 1)) && (user.plan == "free")
       errors.add(:base, "Free plan can only have one project.")
     end
+  end
+
+  def self.by_plan_and_user(user_id)
+    # Assuming you have a method to get the user's plan
+    user = User.find(user_id)
+    if user.plan == "premium"
+      user.projects
+    else
+      user.projects.order(:id).limit(1)
+    end
+  end
+
+  def self.by_user(user_id)
+    where(user_id: user_id)
+  end
+
+  def self.by_organization(organization_id)
+    where(organization_id: organization_id)
+  end
+
+  def self.by_user_and_organization(user_id, organization_id)
+    where(user_id: user_id, organization_id: organization_id)
   end
 end
