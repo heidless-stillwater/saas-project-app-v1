@@ -29,6 +29,14 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     # debugger
     @user_plan = Plan.find(current_user.plan_id)
+
+    # debugger
+    # Update the filename of the associated blob
+    # 'key' to change cloud storage name
+    # f_org_name = @org_active.name
+    # f_key = @project.image.blob.key
+    # @project.image.blob.update(key: "#{f_org_name}/#{f_key}")
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to [ @org_active, @project ], notice: "Project was successfully created." }
@@ -40,6 +48,13 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1 or /projects/1.json
   def update
+    # debugger
+    # Update the filename of the associated blob
+    # # 'key' to change cloud storage name
+    # f_org_name = @org_active.name
+    # f_key = @project.image.blob.key
+    # @project.image.blob.update(key: "#{f_key}")
+
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to [ @org_active, @project ], notice: "Project was successfully updated." }

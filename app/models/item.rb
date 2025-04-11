@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 
   MAX_FILE_SIZE = 10.megabytes
 
-  validate_presence_of :name, :upload
+  validates_presence_of :name, :upload
   validates_uniqueness_of :name
 
   validate :upload_file_size

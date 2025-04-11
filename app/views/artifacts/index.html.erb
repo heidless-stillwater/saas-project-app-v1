@@ -19,15 +19,15 @@
           <div class="d-flex flex-row mt-1 justify-content-center">
 
             <%= link_to artifact do %>
-              <%= fa_icon "eye 2x", class: "mt-1 mx-2" %>
+              <%= fa_icon "eye 2x", class: "mt-1 mx-2 text-primary" %>
             <% end %>
 
             <%= link_to edit_artifact_path(artifact) do %>
-              <%= fa_icon "edit 2x", class: "mt-1 mx-2" %>
+              <%= fa_icon "edit 2x", class: "mt-1 mx-2 text-success" %>
             <% end %>
 
             <%= link_to artifact, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-              <%= fa_icon "trash 2x", class: "mt-1 mx-2" %>
+              <%= fa_icon "trash 2x", class: "mt-1 mx-2 text-danger" %>
             <% end %>
 
           </div>

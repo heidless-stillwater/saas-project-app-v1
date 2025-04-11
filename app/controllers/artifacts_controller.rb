@@ -23,7 +23,14 @@ class ArtifactsController < ApplicationController
   def create
     @artifact = Artifact.new(artifact_params)
     @artifact.user_id = current_user.id
-    
+
+    # debugger
+    # Update the filename of the associated blob
+    # 'key' to change cloud storage name
+    # f_org_name = @org_active.name
+    # f_key = @artifact.artimg.blob.key
+    # @artifact.artimg.blob.update(key: "#{f_org_name}/#{f_key}")
+
     respond_to do |format|
       if @artifact.save
         format.html { redirect_to @artifact, notice: "Artifact was successfully created." }
@@ -37,6 +44,11 @@ class ArtifactsController < ApplicationController
 
   # PATCH/PUT /artifacts/1 or /artifacts/1.json
   def update
+    # debugger
+    # f_org_name = @org_active.name
+    # f_key = @artifact.artimg.blob.key
+    # @artifact.artimg.blob.update(key: "#{f_key}")
+
     respond_to do |format|
       if @artifact.update(artifact_params)
         format.html { redirect_to @artifact, notice: "Artifact was successfully updated." }
@@ -65,7 +77,7 @@ class ArtifactsController < ApplicationController
   end
 
   private
-  
+
     # Use callbacks to share common setup or constraints between actions.
     def set_artifact
       @artifact = Artifact.find(params[:id])
