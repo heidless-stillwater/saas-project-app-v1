@@ -11,35 +11,56 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Organizations
+            <%= fa_icon 'star' %>
+            Admin
           </a>
-          <div class="dropdown-menu">
-            <% if current_user %>
-              <%= link_to new_organization_path, class: "dropdown-item" do %>
-                <%= fa_icon 'edit'%> New Organization
+          <ul class="dropdown-menu">
+            <li>            
+              <% if current_user %>
+                <%= link_to new_plan_path, class: "dropdown-item" do %>
+                  <%= fa_icon 'edit'%> New Plan
+                <% end %>
+              <% end %>  
+            </li>
+            <li><%= link_to "View Plans", plans_path, class: "dropdown-item" %></li>
+
+            <li><hr class="dropdown-divider"></li>
+            
+            <li>
+              <% if current_user %>
+                <%= link_to new_organization_path, class: "dropdown-item" do %>
+                  <%= fa_icon 'edit'%> New Organization
+                <% end %>
               <% end %>
-            <% end %>
-            <%= link_to "View Organization", organizations_path, class: "dropdown-item" %>
-          </div>
+            </li>
+            <li><%= link_to "View Organizations", organizations_path, class: "dropdown-item" %></li>
+          </ul>
+          
         </li>  
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Plans
+            <%= fa_icon 'file' %>
+            Artifact
           </a>
-          <div class="dropdown-menu">
-            <% if current_user %>
-              <%= link_to new_plan_path, class: "dropdown-item" do %>
-                <%= fa_icon 'edit'%> New Plan
-              <% end %>
-            <% end %>
-            <%= link_to "View Plan", plans_path, class: "dropdown-item" %>
-          </div>
+          <ul class="dropdown-menu">
+            <li>            
+              <% if current_user %>
+                <%= link_to new_artifact_path, class: "dropdown-item" do %>
+                  <%= fa_icon 'edit'%> New Artifact
+                <% end %>
+              <% end %>  
+            </li>
+            <li><%= link_to "View Artifacts", artifacts_path, class: "dropdown-item" %></li>
+
+          </ul>
+          
         </li>  
 
         <% if current_user %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= fa_icon 'user' %>
               Profile
             </a>
             <ul class="dropdown-menu">
@@ -53,6 +74,7 @@
           
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= fa_icon 'bell' %>
               Projects
             </a>
             <div class="dropdown-menu">
@@ -65,8 +87,6 @@
               <%= link_to "View Projects", organization_projects_path(@org_active), class: "dropdown-item" %>
             </div>
           </li>  
-
-
         <% end%> 
       </ul>
       

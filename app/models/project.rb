@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   belongs_to :user, optional: true
 
   has_one_attached :image  # for single image uploads
-  has_name :items, dependent: :destroy # for multiple items
+  has_many :items, dependent: :destroy # for multiple items
 
   validates_uniqueness_of :name, scope: :organization_id
   # validates :name, presence: true

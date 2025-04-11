@@ -11,7 +11,13 @@ class Item < ApplicationRecord
 
   private
 
-  def upload_to_gcs
+  def upload_item_to_gcs(file, directory_name)
+    profile_picture.attach(
+      io: file,
+      filename: file.original_filename,
+      content_type: file.content_type,
+      key: "#{directory_name}/#{file.original_filename}"
+    )
   end
 
   def upload_file_size
