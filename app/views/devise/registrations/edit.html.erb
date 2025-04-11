@@ -25,14 +25,15 @@
         <% end %>
       </div>
 
-      <div class="form-group col-md-6 mt-3">
-        <%= f.label :organization %>
-        <%= f.select(:organization_id, class: "form-select") do %>
-          <% # debugger %>
-          <% @organizations.each do |c| -%>
-            <%= content_tag(:option, c.name, value: c.id) %>
-          <% end %>
-        <% end %>
+      <div class="control-group col-md-6 mt-3">
+        <%= f.label :organization, class: "control-group" %>
+        <div class="controls">
+          <%= collection_select(:organization_id, 
+                                :organization, Organization.all, 
+                                :id, :name, 
+                                {selected: current_user.organization_id}, 
+                                { multiple: false }) %>
+        </div>
       </div>
 
       <div class="form-row">
