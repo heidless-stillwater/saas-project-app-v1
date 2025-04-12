@@ -38,24 +38,26 @@
           
         </li>  
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= fa_icon 'file' %>
-            Artifact
-          </a>
-          <ul class="dropdown-menu">
-            <li>            
-              <% if current_user %>
-                <%= link_to new_artifact_path, class: "dropdown-item" do %>
-                  <%= fa_icon 'edit'%> New Artifact
-                <% end %>
-              <% end %>  
-            </li>
-            <li><%= link_to "View Artifacts", artifacts_path, class: "dropdown-item" %></li>
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= fa_icon 'file' %>
+              Artifact
+            </a>
+            <ul class="dropdown-menu">
+              <li>            
+                <% if current_user %>
+                  <%= link_to new_artifact_path, class: "dropdown-item" do %>
+                    <%= fa_icon 'edit'%> New Artifact
+                  <% end %>
+                <% end %>  
+              </li>
+              <li><%= link_to "View Artifacts", artifacts_path, class: "dropdown-item" %></li>
 
-          </ul>
-          
-        </li>  
+            </ul>
+            
+          </li>  
+        <% end %>
 
         <% if current_user %>
           <li class="nav-item dropdown">
