@@ -91,6 +91,26 @@
             </ul>
           </li>  
         <% end %>
+                
+        <!-- ITEM -->
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= fa_icon 'file' %>
+              Items
+            </a>
+            <ul class="dropdown-menu">
+              <li>            
+                <% if current_user %>
+                  <%= link_to new_item_path, class: "dropdown-item" do %>
+                    <%= fa_icon 'edit'%> New Item
+                  <% end %>
+                <% end %>  
+              </li>
+              <li><%= link_to "View Items", items_path, class: "dropdown-item" %></li>
+            </ul>
+          </li>  
+        <% end %>
       </ul>
       
       <ul class="navbar-nav me-auto mb-0 mb-lg-0">
