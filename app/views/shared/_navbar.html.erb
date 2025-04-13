@@ -21,9 +21,9 @@
                 <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
                   <%= fa_icon 'edit'%> Edit Profile
                 <% end %>
+                <li><%= link_to "View Profile", user_path(current_user), class: "dropdown-item" %></li>
               <% end %>
             </li>
-            <li><%= link_to "View Profile", user_path(current_user), class: "dropdown-item" %></li>
 
             <li><hr class="dropdown-divider"></li>
 
@@ -54,7 +54,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= fa_icon 'file' %>
-              Artifact
+              Artifacts
             </a>
             <ul class="dropdown-menu">
               <li>            
