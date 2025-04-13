@@ -50,6 +50,7 @@
           
         </li>  
 
+        <!-- ARTIFACT -->
         <% if current_user %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,6 +72,25 @@
           </li>  
         <% end %>
 
+        <!-- PROJECT -->
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= fa_icon 'file' %>
+              Projects
+            </a>
+            <ul class="dropdown-menu">
+              <li>            
+                <% if current_user %>
+                  <%= link_to new_organization_project_path(@org_active), class: "dropdown-item" do %>
+                    <%= fa_icon 'edit'%> New Project
+                  <% end %>
+                <% end %>  
+              </li>
+              <li><%= link_to "View Projects", organization_projects_path(@org_active), class: "dropdown-item" %></li>
+            </ul>
+          </li>  
+        <% end %>
       </ul>
       
       <ul class="navbar-nav me-auto mb-0 mb-lg-0">
