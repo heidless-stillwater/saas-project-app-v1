@@ -18,7 +18,7 @@
       <div class="img-responsive center-block">      
         <% if current_user.avatar.present? %>  
           <% # debugger %>
-          <%= image_tag @user.avatar, width: "200", class: "mx-auto d-block" %>
+          <%= image_tag @user.avatar, width: 400, class: "mx-auto d-block" %>
         <% else %>
           <h1 class="text-center my-5"> No Avatar </h1>
         <% end %>

@@ -2,27 +2,10 @@
 <div class="container">
   <% content_for :title, "Projects" %>
 
-
-  <div class="card text-center mx-auto mb-2" style="width: 19rem;">
-
-    <div class="card-body">
-      <h3 class="card-title"><%= current_user.email %></h3>
-    </div>
-
-    <% if current_user.avatar.present? %>  
-      <%= image_tag current_user.avatar, width: "200", class: "mx-auto d-block card-img-top" %>
-    <% else %>
-      <h1 class="text-center my-5"> No Avatar </h1>
-    <% end %>
-
-    <h3 class="card-subtitle my-3"><%= fa_icon 'money 1x' %> <%= Plan.find(current_user.plan_id).name %></h3>
-
-  </div>
-
   <div class="mb-3">
     <% if @org_active.can_create_projects? %>
       <div class="text-center">
-        <%= link_to "New Project", new_organization_project_path(@org_active), class: "btn btn-success mt-2" %>
+        <h1 class="text-center mt-1 mb-0 text-white">Projects <%= link_to "New Project", new_organization_project_path(@org_active), class: "btn btn-success mb-0" %></h1>
       </div>
     <% else %>
       <div class="text-center">
@@ -32,7 +15,7 @@
   </div>
 
   <div id="projects">
-    <div class="row row-cols-4 justify-content-center">
+    <div class="row row-cols-4 justify-content-center mt-5">
       <table class="table table-striped-columns table-hover table-sm">
         <thead class="thead-dark">
           <td class="">Organization</td>
