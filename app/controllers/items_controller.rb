@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
     @item.destroy!
 
     respond_to do |format|
-      format.html { redirect_to items_path, status: :see_other, notice: "Item was successfully destroyed." }
+      format.html { redirect_to organization_projects_path(@org_active), status: :see_other, notice: "Item was successfully destroyed." }
       format.json { head :no_content }
     end
   end
