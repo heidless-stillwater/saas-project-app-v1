@@ -4,12 +4,4 @@
 
 <div>
 
-  <div>
-    <%= link_to "Edit this item", edit_item_path(@item) %> |
-    <%= link_to "Back to Project", organization_project_path(@org_active, @item.project_id) %> |
-    <%= link_to @item, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-      <%= fa_icon "trash 2x", class: "mt-0 mx-2 text-danger" %>
-    <% end %>
-  </div>
-
 </div>
