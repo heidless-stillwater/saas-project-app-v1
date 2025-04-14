@@ -11,7 +11,7 @@
 
   <p>
     <strong>Project:</strong>
-    <%= item.project_id %>
+    <%= Project.find(item.project_id).name %>
   </p>
 
 </div>
