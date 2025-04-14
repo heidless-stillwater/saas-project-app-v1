@@ -16,9 +16,9 @@
     <form>
       <div class="form-group">
 
-        <div class="form-group col-12 mt-0">
+        <div class="form-group mt-0">
           <%= form.label :name, style: "display: block", class: "flabel" %>
-          <%= form.text_field :name %>
+          <%= form.text_field :name, class: "col-12" %>
         </div>
 
         <div class="form-group mt-3">
@@ -26,10 +26,9 @@
           <%= form.file_field :image, value: "Select Image", accept: "image/jpeg,image/gif,image/png", class: 'form-control' %>
         </div>
         
-
-        <div class="form-group col-md-6 mt-3">
+        <div class="form-group mt-3">
             <%= form.label :details, style: "display: block", class: "flabel" %>
-            <%= form.text_field :details %>
+            <%= form.text_field :details, class: "col-12" %>
         </div>
 
         <div class="form-group col-md-12 mt-3">
@@ -42,7 +41,7 @@
 
       </div>
 
-      <button type="submit" class="btn btn-primary mt-5 col-12">Save Project </button>
+      <button type="submit" class="btn btn-primary mt-4 col-12">Save Project </button>
     </form>
 
   <% end %>
