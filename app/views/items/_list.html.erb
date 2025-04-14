@@ -17,8 +17,8 @@
                 <tr>
                   <td class="w-5"><%= item.name %></td>
                   <td class="w-15">
-                    <% if project.image.present? %>
-                      <%= image_tag project.image, width: "50", class: "mx-auto d-block" %>
+                    <% if item.item_img.present? %>
+                      <%= image_tag item.item_img, width: "50", class: "mx-auto d-block" %>
                     <% else %>
                       <h2 class="text-center my-5 text-secondary"> No Image </h2>
                     <% end %>
