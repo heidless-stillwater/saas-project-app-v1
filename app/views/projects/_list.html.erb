@@ -16,20 +16,20 @@
 
   <% if @projects.size > 0  %>
     <div id="projects">
-      <div class="row row-cols-4 justify-content-center">
+      <div class="row justify-content-center">
         <table class="table table-striped-columns table-hover table-sm">
           <thead class="thead-dark">
-            <td class="">Organization</td>
-            <td class="">Project Image</td>
-            <td class="">Project Name</td>
-            <td class="">Project Details</td>
-            <td class="">Project Due Data</td>
-            <td class="">Actions</td>
+            <th class="">Organization</th>
+            <th class="">Project Image</th>
+            <th class="">Project Name</th>
+            <th class="">Project Details</th>
+            <th class="">Project Due Data</th>
+            <th class="">Actions</td>
           </thead>
           <tbody>
             <% @projects.each do |project| %>
               <tr>
-                <td class=""><%= Organization.find(project.organization_id).name %></td>
+                <td class="w-5"><%= Organization.find(project.organization_id).name %></td>
                 <td>
                   <% if project.image.present? %>
                     <%= image_tag project.image, width: "50", class: "mx-auto d-block" %>
@@ -41,7 +41,7 @@
                                           class: "",
                                           style: "color: #428bca; text-decoration: none;" %>
                 </td>
-                <td class="w-25"><%= project.details %></td>
+                <td class=""><%= project.details %></td>
                 <td class=""><%= project.expected_completion_date %></td>
 
                 <td class="">
