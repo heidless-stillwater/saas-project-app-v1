@@ -107,12 +107,19 @@
               <% end %>
           </li>
 
-          <li class="nav-item me-3">
-              <%= link_to current_user, class: "btn btn-success", style: "text-decoration: none" do %>
-                <%= fa_icon 'user' %> <%= current_user.username ? current_user.username : "No Username" %> (<%= current_user ? current_user.email : "Not logged in" %>)
+          <li class="nav-item me-3" style="">
+              <%= link_to current_user, class: "", style: "text-decoration: none" do %>
+                <!-- <%= fa_icon 'user' %> <%= current_user.username ? current_user.username : "No Username" %> (<%= current_user ? current_user.email : "Not logged in" %>) -->
+
+                <% if current_user.avatar.present? %>
+                  <%= image_tag current_user.avatar, width: "40", class: "mx-auto d-block" %>
+                <% else %>
+                  User Image
+                <% end %>
+
               <% end %>
           </li>
-
+          
           <li class="nav-item me-3">
             <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-xs btn-danger logout-button" %>
           </li>
