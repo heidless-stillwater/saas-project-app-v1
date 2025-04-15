@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @item.project_id = params[:project_id]
   end
 
   # GET /items/1/edit
@@ -25,7 +26,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: "Item was successfully created." }
+        format.html { redirect_to organization_project_path(@org_active, @item.project_id), notice: "Item was successfully created." }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class ItemsController < ApplicationController
     @item.destroy!
 
     respond_to do |format|
-      format.html { redirect_to organization_projects_path(@org_active), status: :see_other, notice: "Item was successfully destroyed." }
+      format.html { redirect_to organization_project_path(@org_active, @item.project_id), status: :see_other, notice: "Item was successfully destroyed." }
       format.json { head :no_content }
     end
   end

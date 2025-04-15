@@ -2,9 +2,7 @@
 
 <h1 class="text-center mt-4 mb-0 text-white">Editing Item</h2>
 
-<% proj_id = params[:project_id].to_i %>
-
-<%= render "form", item: @item, project_id: proj_id %>
+<%= render "form", item: @item, project_id: @item.project_id %>
 
 <div class="d-flex flex-row justify-content-center mt-4">
   <%= link_to @item do %>
