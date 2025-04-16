@@ -29,11 +29,7 @@
 
         <div class="form-group col-md-6">
           <%= f.label :organization %>
-          <%= f.select(:organization_id, class: "form-select") do %>
-            <% @organizations.each do |c| -%>
-              <%= content_tag(:option, c.name, value: c.id) %>
-            <% end %>
-          <% end %>
+          <%= f.collection_select :organization_id, Organization.all, :id, :name, {selected: @org_active.id } %>
         </div>
       </div>
 
