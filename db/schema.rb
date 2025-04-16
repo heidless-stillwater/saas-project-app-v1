@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_14_111348) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_16_141337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,6 +111,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_14_111348) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+  create_table "tarrifs", force: :cascade do |t|
+    t.string "email"
+    t.string "token"
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_tarrifs_on_organization_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -127,6 +136,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_14_111348) do
     t.string "username"
     t.integer "organization_id"
     t.bigint "plan_id"
+    t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["plan_id"], name: "index_users_on_plan_id"
@@ -142,5 +152,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_14_111348) do
   add_foreign_key "plans", "organizations"
   add_foreign_key "projects", "organizations"
   add_foreign_key "projects", "users"
+  add_foreign_key "tarrifs", "organizations"
   add_foreign_key "users", "plans"
 end
