@@ -32,7 +32,7 @@
                 <td class="w-5"><%= Organization.find(project.organization_id).name %></td>
                 <td>
                   <% if project.image.present? %>
-                    <%= image_tag project.image, width: "50", class: "mx-auto d-block" %>
+                    <%= image_tag project.image, width: "35", class: "mx-auto d-block" %>
                   <% else %>
                     <h2 class="text-center my-5 text-secondary"> No Image </h2>
                   <% end %>

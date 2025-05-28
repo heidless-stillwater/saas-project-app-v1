@@ -5,31 +5,56 @@ namespace :organizations do
     Plan.destroy_all
     User.destroy_all
 
+    logo = Rails.root.join("db", "images", "logo", "choam-logo.png")
+    puts "Loading logo from: #{logo}"
+
+    choam = Organization.create(name: "C.H.O.A.M", active_org: true, domain: "choam.com", subdomain: "spice")
+    choam.logo.attach(io: File.open(Rails.root.join("db", "images", "avatar-set", "17.png")), filename: "17.png")
+
     lumin = Organization.create(name: "Lumin Inc", active_org: false, domain: "lumin.com", subdomain: "innies")
     mega = Organization.create(name: "Mega Corp", active_org: false, domain: "mega.com", subdomain: "mega")
-    choam = Organization.create(name: "C.H.O.A.M", active_org: true, domain: "choam.com", subdomain: "spice")
-    puts "LUMIN: #{lumin.name} : #{lumin.active_org}"
-    puts "CHOAM: #{choam.name} : #{choam.active_org}"
+    # puts "LUMIN: #{lumin.name} : #{lumin.active_org}"
+    # puts "CHOAM: #{choam.name} : #{choam.active_org}"
 
-    plan1 = Plan.create(name: "premium", amount: 0.1e3, symbol: "", organization_id: 1)
-    plan2 = Plan.create(name: "free", amount: 00, symbol: "", organization_id: 1)
-    puts "PLAN: #{plan1.name} : #{plan1.amount}"
-    puts "PLAN: #{plan2.name} : #{plan2.amount}"
+    plan1 = Plan.create(id: 1, name: "premium", amount: 0.1e3, symbol: "", organization_id: choam.id)
+    plan2 = Plan.create(id: 2, name: "free", amount: 00, symbol: "", organization_id: choam.id)
+    # puts "PLAN: #{plan1.name} : #{plan1.amount}"
+    # puts "PLAN: #{plan2.name} : #{plan2.amount}"
 
-    lumin.plan_id = plan2.id
+    lumin.plan_id = plan1.id
     lumin.save
 
-    mega.plan_id = plan2.id
+    mega.plan_id = plan1.id
     mega.save
 
-    choam.plan_id = plan2.id
+    choam.plan_id = plan1.id
     choam.save
 
-    user1 = User.create(email: "jsnow@choam.com", username: "jsnow", password: "password", organization_id: choam.id, plan_id: 2)
-    user1 = User.create(email: "test_1@choam.com", username: "t1_choam", password: "password", organization_id: choam.id, plan_id: 2)
-    user2 = User.create(email: "test_1@lumin.com", username: "t1_lumin", password: "password", organization_id: lumin.id, plan_id: 2)
-    user3 = User.create(email: "test_1@mega.com", username: "t1_mega", password: "password", organization_id: mega.id, plan_id: 2)
+    user1 = User.create(email: "jsnow@choam.com", username: "js_choam", password: "password", organization_id: choam.id, plan_id: 1, is_admin: true)
+
+    avatar_rand = rand(1..24)
+    avatar_fname = "#{avatar_rand}.png"
+    puts "avatar_rand: #{avatar_rand}"
+    puts "avatar_fname: #{avatar_rand}.png"
+    puts "avatar_path: #{Rails.root.join("db", "images", "avatar-set", "#{avatar_fname}")}"
+
+    user1.avatar.attach(io: File.open(Rails.root.join("db", "images", "avatar-set", "#{avatar_fname}")), filename: user1.email)
+
     puts "user1: #{user1.email} #{user1.username}"
-    puts "user2: #{user2.email} #{user1.username}"
+
+    project_rand = rand(1..48)
+    project_fname = "#{project_rand}.png"
+    project1 = Project.create(name: "Spice Mining", details: "Mining the spice from Arrakis", expected_completion_date: Date.today + 30, organization_id: choam.id)
+    project1.image.attach(io: File.open(Rails.root.join("db", "images", "rpg-fantasy-avatars", "PNG", "without-bg", "#{project_fname}")), filename: project1.id.to_s + ".png")
+
+    item_rand = rand(1..48)
+    item_fname = "#{item_rand}.png"
+    item1 = Item.create(name: "Spice Harvester", description: "A machine to harvest spice", project_id: project1.id)
+    item1.item_img.attach(io: File.open(Rails.root.join("db", "images", "craftpix-net-482753-free-currency-loot-vector-icons", "PNG", "without_shadow", "#{item_fname}")), filename: item1.id.to_s + ".png")
+
+    item_rand1 = rand(1..48)
+    item_fname1 = "#{item_rand1}.png"
+    item2 = Item.create(name: "Spice Refinery", description: "A facility to refine spice", project_id: project1.id)
+    item2.item_img.attach(io: File.open(Rails.root.join("db", "images", "craftpix-net-482753-free-currency-loot-vector-icons", "PNG", "without_shadow", "#{item_fname1}")), filename: item2.id.to_s + ".png")
   end
 end

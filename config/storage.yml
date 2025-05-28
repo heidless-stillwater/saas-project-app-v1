@@ -8,7 +8,7 @@ local:
 
 google:
   service: GCS
-  project: photo-app-v1
+  project: h-pfolio-4
   credentials: <%= Rails.application.credentials.dig(:gcs_storage, :gcs_keyfile) %>
   bucket: <%= Rails.application.credentials.dig(:gcs_storage, :gcs_bucket) %>
 
@@ -16,7 +16,7 @@ google:
 
 google_dev:
   service: GCS
-  project: photo-app-v1
+  project: h-pfolio-4
   credentials: <%= Rails.application.credentials.dig(:gcs_storage, :gcs_keyfile) %>
   bucket: <%= Rails.application.credentials.dig(:gcs_storage, :gcs_bucket) %>
   
