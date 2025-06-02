@@ -75,7 +75,7 @@ gem "mini_magick", "~> 5.2"
 gem "fog", "~> 0.7.2"
 gem "ffi", "~> 1.17"
 gem "image_processing", "~> 1.14"
-gem "google-cloud-storage", "~> 1.55"
+gem "google-cloud-storage", "~> 1.56"
 gem "streamio-ffmpeg", "~> 3.0"
 
 gem "acts_as_tenant", "~> 1.0"
