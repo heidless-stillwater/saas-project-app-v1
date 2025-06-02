@@ -72,7 +72,7 @@ gem "stripe", "~> 13.5"
 # media
 gem "carrierwave", "~> 3.1"
 gem "mini_magick", "~> 5.2"
-gem "fog", "~> 0.7.2"
+gem "fog", "~> 2.3.0"
 gem "ffi", "~> 1.17"
 gem "image_processing", "~> 1.14"
 gem "google-cloud-storage", "~> 1.55"
