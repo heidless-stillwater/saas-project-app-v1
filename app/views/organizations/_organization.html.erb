@@ -1,0 +1,25 @@
+<div id="<%= dom_id organization %>">
+  <div class="card card-header text-center" style="width: 19rem;">
+    <div class="card-body">
+      <h5 class="card-title mt-2 fs-2"><%= organization.name %></h5>
+
+      <div class="img-responsive center-block">      
+        <% if organization.logo.present? %>  
+          <% # debugger %>
+          <%= image_tag organization.logo, width: "200", class: "mx-auto d-block" %>
+        <% else %>
+          <h2 class="text-center my-5 text-secondary"> No Logo </h2>
+        <% end %>
+      </div>
+
+      <h5 class="card-title mt-2">domain: <%= organization.domain %></h5>
+      <h5 class="card-title mt-2 mb-4">subdomain: <%= organization.subdomain %></h5>
+      <% if organization.active_org %>
+        <p class="card-text text-success fs-3 fw-bold">Active</p>
+      <% else %>
+        <p class="card-text text-secondary fs-3">Inactive</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+

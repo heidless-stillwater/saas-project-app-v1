@@ -1,0 +1,99 @@
+
+<div class="container">
+  <% content_for :title, "Projects TST" %>
+
+  <div class="mb-3">
+    <% if @org_active.can_create_projects? %>
+      <div class="text-center">
+        <h1 class="text-center mt-5 mb-0 text-white">Projects <%= link_to "New Project", new_organization_project_path(@org_active), class: "btn btn-success mb-0" %></h1>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <h2 class="text-center my-5 text-secondary"> You do not have permission to create more projects </h2>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="projects">
+    <div class="row row-cols-4 justify-content-center mt-5">
+      <table class="table table-striped-columns table-hover table-sm">
+        <thead class="thead-dark">
+          <td class="">Organization</td>
+          <td class="">Project Image</td>
+          <td class="">Project Name</td>
+          <td class="">Project Details</td>
+          <td class="">Project Due Data</td>
+          <td class="">Actions</td>
+        </thead>
+        <tbody>
+          <% @projects.each do |project| %>
+            <tr>
+              <td class=""><%= Organization.find(project.organization_id).name %></td>
+              <td>
+                <% if project.image.present? %>
+                  <%= image_tag project.image, width: "90", class: "mx-auto d-block" %>
+                <% else %>
+                  <h2 class="text-center my-5 text-secondary"> No Image </h2>
+                <% end %>
+              </td>  
+              <td class=""><%= link_to project.name, organization_project_path(@org_active, project), 
+                                        class: "",
+                                        style: "color: #428bca; text-decoration: none;" %>
+              </td>
+              <td class="w-25"><%= project.details %></td>
+              <td class=""><%= project.expected_completion_date %></td>
+
+              <td class="">
+                <%= link_to [@org_active, project] do %>
+                  <%= fa_icon "eye 2x", class: "mt-1 mx-2 text-primary" %>
+                <% end %>
+
+                <%= link_to edit_organization_project_path(@org_active, project) do %>
+                  <%= fa_icon "edit 2x", class: "mt-1 mx-2 text-success" %>
+                <% end %>
+
+                <%= link_to [@org_active, project], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                  <%= fa_icon "trash 2x", class: "mt-1 mx-2 text-danger" %>
+                <% end %>
+              </td>
+
+            </tr>         
+
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+<!--
+  <div class="mt-3" id="projects">
+    <div class="row row-cols-4 justify-content-center">
+      <% @projects.each do |project| %>
+      
+        <div class="center me-0 mb-5">
+
+          <%= render project %>
+          
+          <div class="d-flex flex-row mt-2 justify-content-center">
+
+            <%= link_to [@org_active, project] do %>
+              <%= fa_icon "eye 2x", class: "mt-1 mx-2" %>
+            <% end %>
+
+            <%= link_to edit_organization_project_path(@org_active, project) do %>
+              <%= fa_icon "edit 2x", class: "mt-1 mx-2" %>
+            <% end %>
+
+            <%= link_to [@org_active, project], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+              <%= fa_icon "trash 2x", class: "mt-1 mx-2" %>
+            <% end %>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+-->
+
+ </div>

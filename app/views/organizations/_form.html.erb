@@ -1,0 +1,68 @@
+
+<div class="container col-4 mt-4">
+  <%= form_with(model: organization) do |form| %>
+    <% if organization.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(organization.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+        <ul>
+          <% organization.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <form>
+      <div class="form-group">
+
+        <%= form.label :name, style: "display: block", class: "flabel" %>
+        <%= form.text_field :name, class: "col-12"  %>
+
+        <div class="form-group mt-3">
+          <%= form.label :plan %>
+          <%= form.select(:plan_id, class: "form-select") do %>
+            <% # debugger %>
+            <% @plans.each do |c| -%>
+              <%= content_tag(:option, c.name, value: c.id) %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="form-group mt-3">
+          <%= form.label :domain, style: "display: block", class: "flabel" %>
+          <%= form.text_field :domain, class: "col-12"  %>
+        </div>
+
+
+        <div class="form-group mt-3">
+          <%= form.label :subdomain, style: "display: block", class: "flabel" %>
+          <%= form.text_field :subdomain, class: "col-12"  %>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group mt-3">
+            <%= form.label :logo %>
+            <%= form.file_field :logo, value: "Select Logo Images", class: 'form-control btn btn-primary col-12' %>
+          </div>
+        </div>
+
+        <div class="mt-4">
+
+          <%= form.radio_button :active_org, true %>
+          <%= form.label :active_org, "Active" %>
+
+          <%= form.radio_button :active_org, false %>
+          <%= form.label :active_org, "Inactive" %>
+
+
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-5 col-12">Save organization </button>
+    </form>
+
+  <% end %>
+
+</div>
+

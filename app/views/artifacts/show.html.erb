@@ -1,0 +1,28 @@
+
+<div class="container">
+  <h1 class="text-center my-3 text-white">Artifact [<%= @artifact.name %>]</h2>
+
+  <div class="row row-cols-4 justify-content-center">
+      <%= render @artifact %>
+  </div>
+
+  <div class="d-flex flex-row justify-content-center mt-0">
+    <%= link_to edit_artifact_path(@artifact) do %>
+      <%= fa_icon "edit 2x", class: "mt-1 mx-2 text-success" %>
+    <% end %>
+
+    <%= link_to new_artifact_path do %>
+      <%= fa_icon "plus-circle 2x", class: "mt-1 mx-2 text-primary" %>
+    <% end %>
+
+    <%= link_to artifacts_path do %>
+      <%= fa_icon "list 2x", class: "mt-1 mx-2" %>
+    <% end %>
+
+    <%= link_to  @artifact, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+      <%= fa_icon "trash 2x", class: "mt-1 mx-2 text-danger" %>
+    <% end %>
+
+  </div>
+
+</div>

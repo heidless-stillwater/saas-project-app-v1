@@ -1,0 +1,39 @@
+
+<div class="container col-6 mt-4">
+  <%= form_with(model: plan) do |form| %>
+    <% if plan.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(plan.errors.count, "error") %> prohibited this image from being saved:</h2>
+        <ul>
+          <% plan.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <form>
+      <div class="form-group">
+
+        <%= form.label :name, style: "display: block", class: "flabel" %>
+        <%= form.text_field :name, class: "col-12" %>
+
+        <%= form.label :amount, style: "display: block", class: "flabel mt-3" %>
+        <%= form.text_field :amount, class: "col-12" %>
+
+        <div class="form-row">
+          <div class="form-group col-md-6 mt-3">
+            <%= form.label :symbol %>
+            <%= form.file_field :symbol, value: "Select Symbol", class: 'form-control btn btn-primary col-12' %>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-5 col-12">Save plan </button>
+    </form>
+
+  <% end %>
+
+</div>
+

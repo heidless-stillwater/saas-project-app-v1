@@ -1,0 +1,19 @@
+
+<div class="container">
+
+  <% content_for :title, "New plan" %>
+
+  <h1 class="text-center mt-4 mb-3 text-white">New plan</h1>
+
+  <%= render "form", plan: @plan %>
+
+  <div class="d-flex flex-row justify-content-center mt-4">
+
+    <%= link_to plans_path do %>
+      <%= fa_icon "list 2x", class: "mt-1 mx-2" %>
+    <% end %>
+
+  </div>
+
+
+</div>

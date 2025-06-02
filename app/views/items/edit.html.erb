@@ -1,0 +1,15 @@
+<% content_for :title, "Editing item" %>
+
+<h1 class="text-center mt-4 mb-0 text-white">Editing Item</h2>
+
+<%= render "form", item: @item, project_id: @item.project_id %>
+
+<div class="d-flex flex-row justify-content-center mt-4">
+  <%= link_to @item do %>
+    <%= fa_icon "eye 2x", class: "mt-0 mx-2 text-primary" %>
+  <% end %>
+
+  <%= link_to organization_project_path(@org_active, @item.project_id) do %>
+    <%= fa_icon "list 2x", class: "mt-1 mx-2" %>
+  <% end %>
+</div>

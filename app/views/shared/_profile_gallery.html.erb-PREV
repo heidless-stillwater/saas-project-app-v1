@@ -1,0 +1,25 @@
+
+      <div class="my-3 text-center">
+        <% if @user.images.attached? %>
+
+          <div class="row">
+            <% @user.images.each do |image| %>
+              <div class="card card-header results-block mx-5 my-1" style="width: 20rem;">
+                <div class="card-body">
+                  <%= image_tag(image, width: 250, class: "mcard-img-top x-auto d-block", alt:"Card image cap") %>
+                  <h5 class="card-title mt-2">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+
+                <%= link_to "Remove", remove_image_user_path(image), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger w-2" %>
+
+                <br />
+              </div>
+            <% end %>
+          </div>
+
+        <% end %>
+      </div>
+
+

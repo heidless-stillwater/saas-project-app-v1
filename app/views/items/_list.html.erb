@@ -1,0 +1,60 @@
+
+<div class="container">
+  <% content_for :title, "Items" %>
+  <% if project.items.size > 0  %>
+    <div id="items">
+      <div class="d-flex justify-content-center">
+        <div class="row col-6 mt-3 ">
+          <table class="table table-striped-columns table-hover table-sm">
+            <thead class="thead-dark">
+              <td class="">Name</td>
+              <td class="">Image</td>
+              <td class="">Details</td>
+              <td class="">Actions</td>
+            </thead>
+            <tbody>
+              <% project.items.each do |item| %>
+                <tr>
+                  <td class="w-5"><%= item.name %></td>
+                  <td class="w-15">
+                    <% if item.item_img.present? %>
+                      <%= image_tag item.item_img, width: "25", class: "mx-auto d-block" %>
+                    <% else %>
+                      <h2 class="text-center my-5 text-secondary"> No Image </h2>
+                    <% end %>
+                  </td>  
+                  <td class="w-15"><%= item.description %></td>
+                  <% # debugger %>
+                  <!-- <% project_id = params[:id].to_i %> -->
+
+                  <td class="w-15">
+
+                    <%= link_to item do %>
+                      <%= fa_icon "eye 2x", class: "mt-0 mx-2 text-primary" %>
+                    <% end %>
+
+                    <%= link_to edit_item_path(item) do %>
+                      <%= fa_icon "edit 2x", class: "mt-0 mx-2 text-success" %>
+                    <% end %>
+
+                    <%= link_to item, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                      <%= fa_icon "trash 2x", class: "mt-0 mx-2 text-danger" %>
+                    <% end %>
+
+
+                  </td>
+
+                </tr>         
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <h2 class="text-center my-5 text-secondary"> No Items </h2>
+    </div>
+  <% end %>
+</div>

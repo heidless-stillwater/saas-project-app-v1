@@ -1,0 +1,23 @@
+
+      <div class="my-3 text-center img-responsive center-block">
+        <% if @user.images.attached? %>
+          <div class="row">
+            <% @user.images.each do |artifact| %>
+              <div class="card card-header results-block mx-3 my-1" style="width: 18rem;">
+                <div class="card-body">
+                  <%= image_tag(artifact, width: 225, class: "mcard-img-top x-auto d-block", alt:"Card image cap") %>
+                  <h5 class="card-title mt-2">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go elsewhere</a>
+                </div>
+
+                <%= link_to "Remove", remove_artimg_artifact_path(artifact), data: { turbo_method: :delete, turbo_confirm: "Are you really sure?" }, width: 1, class: "btn btn-danger" %>
+                <br />
+              </div>
+            <% end %>
+          </div>
+
+        <% end %>
+      </div>
+
+

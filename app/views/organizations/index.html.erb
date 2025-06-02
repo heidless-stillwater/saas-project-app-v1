@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div class="mb-5">
+    <h1 class="text-center mt-4 mb-3 text-white">Organizations
+      <%= link_to "New organization", new_organization_path, class: "btn btn-success" %></h1>
+  </div>
+
+  <div id="organizations">
+    <div class="row row-cols-4 justify-content-center">
+      <% @organizations.each do |organization| %>
+      
+        <div class="center me-0 mb-5">
+          <%= render organization %>
+          
+          <div class="d-flex flex-row mt-2 justify-content-center">
+
+            <%= link_to organization do %>
+              <%= fa_icon "eye 2x", class: "mt-1 mx-2 text-primary" %>
+            <% end %>
+
+            <%= link_to edit_organization_path(organization) do %>
+              <%= fa_icon "edit 2x", class: "mt-1 mx-2 text-success" %>
+            <% end %>
+
+            <%= link_to organization, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+              <%= fa_icon "trash 2x", class: "mt-1 mx-2 text-danger" %>
+            <% end %>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+

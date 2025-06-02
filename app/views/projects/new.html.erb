@@ -1,0 +1,14 @@
+<% content_for :title, "New project" %>
+
+<h1 class="text-center mt-4 mb-0 text-white">New Project</h2>
+
+
+<%= render "form", project: @project %>
+
+<div class="d-flex flex-row justify-content-center mt-4">
+
+  <%= link_to organization_projects_path(@org_active) do %>
+    <%= fa_icon "list 2x", class: "mt-1 mx-2" %>
+  <% end %>
+
+</div>
